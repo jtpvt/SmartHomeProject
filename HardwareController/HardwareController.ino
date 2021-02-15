@@ -46,17 +46,7 @@ void loop()
   {
     char val = Serial.read();
     
-    switch(val)
-    {
-      case 't':
-        digitalWrite(OUT_nightLight, HIGH);
-        break;
-      case 'r':
-        digitalWrite(OUT_nightLight, LOW);
-        break;
-      default:
-        Serial.print("Invalid input");
-        break;
-    }
+    if (val == 't') digitalWrite(OUT_nightLight, HIGH);
+    if (val == 'r') digitalWrite(OUT_nightLight, LOW);
   }
 }
