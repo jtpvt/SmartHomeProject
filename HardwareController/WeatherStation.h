@@ -13,6 +13,17 @@ class WeatherStation
           humidity;      // relative humidity (%RH)
     int thermistorZ, humiditySensorZ;  // impedances of components (kOhms)
 
+/*
+ * 
+ */
+
   public:
-    void init(){}
+    void init() {}
+
+    // Calculates and returns impedance (kOhms) with a 2-resistor voltage divider
+    int calculateComponentImpedance(int voltage)
+    {
+      return DIVIDE_R * (SOURCE_V / voltage - 1); // If component is R1
+      //return DIVIDE_R / (SOURCE_V / voltage - 1); // If component is R2
+    }
 };
