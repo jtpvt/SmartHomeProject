@@ -10,6 +10,7 @@
 const int V_MAX = 1024,  // +5V
           V_MIN =    0;  //  0V
 
+// object instantiations for smart home features
 NightLight     NL;
 WeatherStation WS;
           
