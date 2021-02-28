@@ -12,4 +12,7 @@ class WeatherStation
     float temperatureC,  // temperature (degC)
           humidity;      // relative humidity (%RH)
     int thermistorZ, humiditySensorZ;  // impedances of components (kOhms)
+
+  public:
+    void init(){}
 };
