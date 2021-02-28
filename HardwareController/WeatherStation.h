@@ -4,6 +4,8 @@
  * activate or deactivate air conditioner or heater.
  */
 
+ #include <math.h>
+
 class WeatherStation
 {
   private:
@@ -25,5 +27,16 @@ class WeatherStation
     {
       return DIVIDE_R * (SOURCE_V / voltage - 1); // If component is R1
       //return DIVIDE_R / (SOURCE_V / voltage - 1); // If component is R2
+    }
+
+    // Estimates humidity with logarithmic equation from a regression analysis of the dataset provided in the humidity sensor's datasheet
+    float estimateRelativeHumidity(float impedance)
+    {
+      float humiMin = -9.49422 * log(0.0000342857 * impedance);  // logarithmic regression at 15degC (59degF)
+      float humiMax = -10.1923 * log(0.0000895662 * impedance);  // logarithmic regression at 25degC (77degF)
+
+      // TODO: Return estimate that's weighted based on the temperature. It's unlikely that temperature range will go outside a range of 15-25 degC (59-77 degF)
+      
+      return (humiMin + humiMax) / 2;
     }
 };
