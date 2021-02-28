@@ -3,6 +3,7 @@
  * Arduino hardware controller for Smart Home Project
  */
 
+#include "InfoDisplay.h"
 #include "IntruderAlert.h"
 #include "NightLight.h"
 #include "WeatherStation.h"
