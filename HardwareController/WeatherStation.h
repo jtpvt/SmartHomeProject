@@ -39,4 +39,10 @@ class WeatherStation
       
       return (humiMin + humiMax) / 2;
     }
+
+    // Estimates temperature with a logarithmic equation from regression analysis of the dataset provided in the thermistor's datasheet
+    float estimateTemperature(float impedance)
+    {
+      return -24.2268 * log(0.339014 * impedance); // logarithmic regression
+    }
 };
