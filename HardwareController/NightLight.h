@@ -3,10 +3,10 @@
  * The night light reads ambient brightness in a room to determine whether to activate or deactivate an LED.
  */
 
- #define ANALOG_IN A0
+#define ANALOG_IN A0
 
- class NightLight
- {
+class NightLight
+{
   public:
     void init() {}
 
@@ -15,4 +15,4 @@
     {
       return analogRead(A0);
     }
- };
+};

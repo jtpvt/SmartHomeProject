@@ -4,7 +4,7 @@
  * activate or deactivate air conditioner or heater.
  */
 
- #include <math.h>
+#include <math.h>
 
 class WeatherStation
 {

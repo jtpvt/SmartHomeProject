@@ -6,29 +6,29 @@
  * 
  */
 
- #define ECHO 7
- #define TRIG 8
+#define ECHO 7
+#define TRIG 8
 
- class IntruderAlert
- {
-    public:
-      void init()
-      {
-        pinMode(ECHO, INPUT);
-        pinMode(TRIG, OUTPUT);
-      }
+class IntruderAlert
+{
+  public:
+    void init()
+    {
+      pinMode(ECHO, INPUT);
+      pinMode(TRIG, OUTPUT);
+    }
 
-      long determineDistance()
-      {
-        // send pulse through TRIG
-        digitalWrite(TRIG, LOW);
-        delayMicroseconds(2);  // buffer
-        digitalWrite(TRIG, HIGH);
-        delayMicroseconds(10);  // absolutely MUST be >=10us
-        digitalWrite(TRIG, LOW);
+    long determineDistance()
+    {
+      // send pulse through TRIG
+      digitalWrite(TRIG, LOW);
+      delayMicroseconds(2);  // buffer
+      digitalWrite(TRIG, HIGH);
+      delayMicroseconds(10);  // absolutely MUST be >=10us
+      digitalWrite(TRIG, LOW);
 
-        // calculate and set distance
-        return pulseIn(ECHO, HIGH) / 58.8;
-      }
- };
+      // calculate and set distance
+      return pulseIn(ECHO, HIGH) / 58.8;
+    }
+};
  
