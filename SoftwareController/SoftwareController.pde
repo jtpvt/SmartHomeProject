@@ -37,16 +37,16 @@ void mousePressed()
 {
 
     if (AC.MouseIsOver()) {
-      Message = new Button("AC is turned on.", 190, 90, 200, 50);
+      AC = new Button("AC: On", 20, 20, 100, 50);
   }
   
-    if (Heater.MouseIsOver()) {
-    Message = new Button("Heater is turned on.", 190, 90, 200, 50);
+    else if (Heater.MouseIsOver()) {
+    Heater = new Button("Heater: On", 150, 20, 100, 50);
   }
   
-      if (Light.MouseIsOver()) {
-    Message = new Button("Light is turned on.", 190, 90, 200, 50);
-  }   
+      else if (Light.MouseIsOver()) {
+    Light = new Button("Light: On", 280, 20, 100, 50);
+  }  
 }
 
 
