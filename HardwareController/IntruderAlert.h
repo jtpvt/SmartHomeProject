@@ -6,29 +6,34 @@
  * 
  */
 
-#define ECHO 7
-#define TRIG 8
-
 class IntruderAlert
 {
+  private:
+    const int PIN_ECHO = 7,
+              PIN_TRIG = 8;
+
+/*
+ * 
+ */
+
   public:
     void init()
     {
-      pinMode(ECHO, INPUT);
-      pinMode(TRIG, OUTPUT);
+      pinMode(PIN_ECHO, INPUT);
+      pinMode(PIN_TRIG, OUTPUT);
     }
 
     long determineDistance()
     {
-      // send pulse through TRIG
-      digitalWrite(TRIG, LOW);
+      // send pulse through PIN_TRIG
+      digitalWrite(PIN_TRIG, LOW);
       delayMicroseconds(2);  // buffer
-      digitalWrite(TRIG, HIGH);
+      digitalWrite(PIN_TRIG, HIGH);
       delayMicroseconds(10);  // absolutely MUST be >=10us
-      digitalWrite(TRIG, LOW);
+      digitalWrite(PIN_TRIG, LOW);
 
       // calculate and set distance
-      return pulseIn(ECHO, HIGH) / 58.8;
+      return pulseIn(PIN_ECHO, HIGH) / 58.8;
     }
 };
  
