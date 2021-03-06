@@ -15,7 +15,7 @@ class NightLight
   public:
     void init() {}
 
-    // returns voltage divider result as 10-bit int (0 = 0V, 1024 = 5V)
+    // returns voltage divider result as 10-bit int (0 = 0V, 1023 = 5V)
     int dividedVoltage()
     {
       return analogRead(PIN_LIGHT_LEVEL);
