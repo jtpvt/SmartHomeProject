@@ -6,6 +6,23 @@
 
 class Bluetooth
 {
+  private:
+    char val; // serial value received
   public:
-  void init() {}
+    void init() {}
+
+    void call()
+    {
+      if (Serial.available())
+      {
+        val = Serial.read();
+        switch(val)
+        {
+          default:
+            Serial.print("Bluetooth did not receive valid reading!\n");
+            break;
+        }
+      }
+      delay(100); // 100ms delay
+    }
 };
