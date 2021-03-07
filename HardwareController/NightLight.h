@@ -6,18 +6,29 @@
 class NightLight
 {
   private:
-    const int PIN_LIGHT_LEVEL = A0;
+    const int PIN_LIGHT_LEVEL   =  A5,
+              PIN_NIGHT_LIGHT   =  13,
+              VOLTAGE_THRESHOLD = 750;
 
 /*
  * 
  */
 
   public:
-    void init() {}
-
-    // returns voltage divider result as 10-bit int (0 = 0V, 1023 = 5V)
-    int dividedVoltage()
+    void init()
     {
-      return analogRead(PIN_LIGHT_LEVEL);
+      pinMode(PIN_NIGHT_LIGHT, OUTPUT);
+    }
+
+    void call()
+    {
+      if (analogRead(PIN_LIGHT_LEVEL) > VOLTAGE_THRESHOLD)
+      {
+        digitalWrite(PIN_NIGHT_LIGHT, HIGH);
+      }
+      else
+      {
+        digitalWrite(PIN_NIGHT_LIGHT, LOW);
+      }
     }
 };
