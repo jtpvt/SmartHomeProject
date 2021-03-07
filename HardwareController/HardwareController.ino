@@ -3,6 +3,7 @@
  * Arduino hardware controller for Smart Home Project
  */
 
+#include "AudioAlert.h"
 #include "Bluetooth.h"
 #include "InfoDisplay.h"
 #include "IntruderAlert.h"
@@ -14,6 +15,7 @@ const int V_MAX = 1023,  // +5V
           V_MIN =    0;  //  0V
 
 // object instantiations for smart home features
+AudioAlert     AA;
 Bluetooth      BT;
 InfoDisplay    ID;
 IntruderAlert  IA;
@@ -24,6 +26,7 @@ void setup()
 {
   Serial.begin(9600);
 
+  AA.init();
   BT.init();
   ID.init();
   IA.init();
