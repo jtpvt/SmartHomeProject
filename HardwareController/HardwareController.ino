@@ -35,3 +35,9 @@ void loop()
 {
   
 }
+
+void printVoltage(int pin)
+{
+  Serial.print(analogRead(pin));
+  Serial.print("\t");
+}
