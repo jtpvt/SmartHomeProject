@@ -9,24 +9,14 @@
 class WeatherStation
 {
   private:
-    const int DIVIDE_R = 270,   // resistor for voltage divider (Ohms)
-              SOURCE_V = 1023;  // max 10-bit int = 5V
-    float temperatureC,  // temperature (degC)
-          humidity;      // relative humidity (%RH)
-    int thermistorZ, humiditySensorZ;  // impedances of components (kOhms)
-
-/*
- * 
- */
-
-  public:
-    void init() {}
+    const int PIN_HEATER =  11,
+              PIN_AC     =  12,
+              DIVIDE_R   = 270;  // resistor for voltage divider (Ohms)
 
     // Calculates and returns impedance (kOhms) with a 2-resistor voltage divider
     int calculateComponentImpedance(int voltage)
     {
-      return DIVIDE_R * (SOURCE_V / voltage - 1); // If component is R1
-      //return DIVIDE_R / (SOURCE_V / voltage - 1); // If component is R2
+      return DIVIDE_R / (1023 / voltage - 1); // component is R2
     }
 
     // Estimates humidity with logarithmic equation from a regression analysis of the dataset provided in the humidity sensor's datasheet
@@ -44,5 +34,22 @@ class WeatherStation
     float estimateTemperature(float impedance)
     {
       return -24.2268 * log(0.339014 * impedance); // logarithmic regression
+    }
+
+/*
+ * 
+ */
+
+  public:
+    void init() {}
+
+    void call()
+    {
+      Serial.print("Humi: ");
+      Serial.print(estimateRelativeHumidity(calculateComponentImpedance(A0)));
+      Serial.print(" %RH\n");
+      Serial.print("Temp: ");
+      Serial.print(estimateTemperature(calculateComponentImpedance(A1)));
+      Serial.print(" degC\n\n");
     }
 };
