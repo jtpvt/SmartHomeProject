@@ -12,6 +12,20 @@ class IntruderAlert
     const int PIN_ECHO = 7,
               PIN_TRIG = 8;
 
+    // Returns distance (in cm) from ultrasonic
+    int determineDistance()
+    {
+      // send pulse through PIN_TRIG
+      digitalWrite(PIN_TRIG, LOW);
+      delayMicroseconds(2);  // buffer
+      digitalWrite(PIN_TRIG, HIGH);
+      delayMicroseconds(10);  // absolutely MUST be >=10us
+      digitalWrite(PIN_TRIG, LOW);
+
+      // calculate and set distance
+      return (int)(pulseIn(PIN_ECHO, HIGH) / 58.8);
+    }
+
 /*
  * 
  */
@@ -23,17 +37,10 @@ class IntruderAlert
       pinMode(PIN_TRIG, OUTPUT);
     }
 
-    long determineDistance()
+    void call()
     {
-      // send pulse through PIN_TRIG
-      digitalWrite(PIN_TRIG, LOW);
-      delayMicroseconds(2);  // buffer
-      digitalWrite(PIN_TRIG, HIGH);
-      delayMicroseconds(10);  // absolutely MUST be >=10us
-      digitalWrite(PIN_TRIG, LOW);
-
-      // calculate and set distance
-      return pulseIn(PIN_ECHO, HIGH) / 58.8;
+      Serial.print(determineDistance());
+      Serial.print("cm\t");
     }
 };
  
