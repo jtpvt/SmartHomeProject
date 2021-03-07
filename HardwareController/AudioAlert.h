@@ -3,7 +3,7 @@
  * An amplifier and speaker play an audio alert on specific events
  */
  
-class InfoDisplay
+class AudioAlert
 {
   public:
     void init() {}
