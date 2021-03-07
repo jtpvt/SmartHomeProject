@@ -11,6 +11,9 @@ PFont FontSize;
 color backgroundColor=color(102);
 color fillColor=color(255);
 
+int a=0;
+
+
 void setup() {
   size (600, 150);//size of the window
   smooth();
@@ -30,23 +33,33 @@ void draw() {
   Heater.Draw();
   Light.Draw();
   Message.Draw();
+  
 }
 
 // when each button clicked, print different message in GUI
 void mousePressed()
 {
-
-    if (AC.MouseIsOver()) {
-      AC = new Button("AC: On", 20, 20, 100, 50);
-  }
   
-    else if (Heater.MouseIsOver()) {
+  
+  while(a<10000){
+    if (AC.MouseIsOver()) {
+      AC = new Button("AC: On", 20, 20, 100, 50);   
+      if (AC.MouseIsOver()) {
+      AC = new Button("AC: Off", 20, 20, 100, 50);} 
+    }
+      
+      
+   if (Heater.MouseIsOver()) {
     Heater = new Button("Heater: On", 150, 20, 100, 50);
   }
   
-      else if (Light.MouseIsOver()) {
+     if (Light.MouseIsOver()) {
     Light = new Button("Light: On", 280, 20, 100, 50);
-  }  
+   }
+  a++;
+  }
+  
+  
 }
 
 
