@@ -4,8 +4,8 @@
  * It will interface with the software controller, which is built with Processing IDE.
  */
 
- class Bluetooth
- {
-    public:
-      void init() {}
- };
+class Bluetooth
+{
+  public:
+  void init() {}
+};

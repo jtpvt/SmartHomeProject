@@ -4,13 +4,13 @@
  * activate or deactivate air conditioner or heater.
  */
 
- #include <math.h>
+#include <math.h>
 
 class WeatherStation
 {
   private:
     const int DIVIDE_R = 270,   // resistor for voltage divider (Ohms)
-              SOURCE_V = 1024;  // max 10-bit int = 5V
+              SOURCE_V = 1023;  // max 10-bit int = 5V
     float temperatureC,  // temperature (degC)
           humidity;      // relative humidity (%RH)
     int thermistorZ, humiditySensorZ;  // impedances of components (kOhms)
