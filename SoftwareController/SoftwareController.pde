@@ -1,17 +1,15 @@
-// Processing application that demonstrates the Button class by creating a button
-// Draws a square in the window when the mouse cursor is over the button
-// Writes to the Processing IDE console pane when the button is clicked
-// 3 July 2015    http://startingelectronics.org
-Button AC;  // the buttons
+//Codes for GUI
+
+// Defining the buttons
+Button AC;  
 Button Heater;      
 Button Light;
 Button Message;
 
+
 PFont FontSize;
 color backgroundColor=color(102);
 color fillColor=color(255);
-
-int a=0;
 
 
 void setup() {
@@ -19,10 +17,11 @@ void setup() {
   smooth();
   
   // create the button object
-  AC = new Button("AC", 20, 20, 100, 50);
-  Heater = new Button("Heater", 150, 20, 100, 50);
-  Light = new Button("Light", 280, 20, 100, 50);
+  AC = new Button("AC: Off", 20, 20, 100, 50);
+  Heater = new Button("Heater: Off", 150, 20, 100, 50);
+  Light = new Button("Light: Off", 280, 20, 100, 50);
   Message = new Button("Message window", 190, 90, 200, 50);
+  
 }
  
 void draw() {
@@ -32,36 +31,17 @@ void draw() {
   AC.Draw();
   Heater.Draw();
   Light.Draw();
-  Message.Draw();
-  
+  Message.Draw(); 
 }
 
 // when each button clicked, print different message in GUI
 void mousePressed()
 {
-  
-  
-  while(a<10000){
-    if (AC.MouseIsOver()) {
-      AC = new Button("AC: On", 20, 20, 100, 50);   
-      if (AC.MouseIsOver()) {
-      AC = new Button("AC: Off", 20, 20, 100, 50);} 
-    }
-      
-      
-   if (Heater.MouseIsOver()) {
-    Heater = new Button("Heater: On", 150, 20, 100, 50);
-  }
-  
-     if (Light.MouseIsOver()) {
-    Light = new Button("Light: On", 280, 20, 100, 50);
-   }
-  a++;
-  }
-  
-  
-}
+  ACloop();
+  HTloop();
+  LTloop();
 
+}
 
 // the Button class
 class Button {
