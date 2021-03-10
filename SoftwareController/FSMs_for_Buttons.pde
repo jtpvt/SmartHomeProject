@@ -1,10 +1,10 @@
-//FSM for AC
+//Defining the starting states
 byte ACstate = 0;//FSM for AC
 byte HTstate = 2;//FSM for heater
 byte LTstate = 4;//FSM for light
 
 //FSM for AC
-void ACloop() {
+void ACFSM() {
 switch(ACstate){
   case 0:
     if (AC.MouseIsOver())
@@ -25,7 +25,7 @@ break;}
 }
 
 //FSM for heater
-void HTloop() {
+void HTFSM() {
 switch(HTstate){
   case 2:
     if (Heater.MouseIsOver())
@@ -46,7 +46,7 @@ break;}
 }
 
 //FSM for light
-void LTloop() {
+void LTFSM() {
 switch(LTstate){
   case 4:
     if (Light.MouseIsOver())

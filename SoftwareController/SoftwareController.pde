@@ -5,23 +5,24 @@ Button AC;
 Button Heater;      
 Button Light;
 Button Message;
+Button Weather;
 
-
-PFont FontSize;
 color backgroundColor=color(102);
 color fillColor=color(255);
 
 
 void setup() {
   size (600, 150);//size of the window
-  smooth();
+  smooth();//smoothes the edges of the buttons
   
   // create the button object
   AC = new Button("AC: Off", 20, 20, 100, 50);
   Heater = new Button("Heater: Off", 150, 20, 100, 50);
   Light = new Button("Light: Off", 280, 20, 100, 50);
-  Message = new Button("Message window", 190, 90, 200, 50);
+  Message = new Button("Message window", 110, 90, 400, 50);
+  Weather = new Button("Current Temp: \n"+"Current Humidity: ", 410, 20, 170, 50);
   
+  AlertMessages();
 }
  
 void draw() {
@@ -32,15 +33,14 @@ void draw() {
   Heater.Draw();
   Light.Draw();
   Message.Draw(); 
+  Weather.Draw();
 }
 
-// when each button clicked, print different message in GUI
-void mousePressed()
-{
-  ACloop();
-  HTloop();
-  LTloop();
-
+// when each button clicked, change the button to on
+void mousePressed() {
+  ACFSM();
+  HTFSM();
+  LTFSM();
 }
 
 // the Button class
